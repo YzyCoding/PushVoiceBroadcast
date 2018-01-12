@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         btPlay = findViewById(R.id.bt_play);
         btDel = findViewById(R.id.bt_del);
         llMoneyList = findViewById(R.id.ll_money_list);
+
+
     }
 
     void initClick() {
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
             VoicePlay.getInstance()
                     .with(MainActivity.this)
+
                     .setmMoney(amount)
                     .play();
 
