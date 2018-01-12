@@ -34,3 +34,8 @@ dependencies {
 [fir下载](https://fir.im/gl7q)
 
 [简书](https://www.jianshu.com/p/62e6382c610b)
+
+
+参考：
+[KTools](https://github.com/jiangkang/KTools/blob/master/app/src/main/java/com/jiangkang/ktools/audio/VoiceSpeaker.java)
+
