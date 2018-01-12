@@ -12,9 +12,9 @@
         }
     }
 
-dependencies {
-    implementation 'com.github.YzyCoding:PushVoiceBroadcast:1.0.0'
-}
+    dependencies {
+        implementation 'com.github.YzyCoding:PushVoiceBroadcast:1.0.0'
+    }
 ```
 
 2. 收到推送时调用
