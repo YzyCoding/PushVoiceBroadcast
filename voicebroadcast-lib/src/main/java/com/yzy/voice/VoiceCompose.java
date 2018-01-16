@@ -1,6 +1,7 @@
 package com.yzy.voice;
 
 import android.text.TextUtils;
+
 import com.yzy.voice.util.VoiceUtils;
 
 import java.util.ArrayList;
@@ -20,10 +21,14 @@ public class VoiceCompose {
      * 音频组合
      *
      * @param voiceBean
-     * @param isNum      支持数字 。默认false
+     * @param isNum     支持数字 。默认false
      * @return
      */
     public static List<String> genVoiceList(VoiceBean voiceBean, boolean isNum) {
+        if (voiceBean == null) {
+            return null;
+        }
+
         List<String> result = new ArrayList<>();
         String success = voiceBean.getmStartSuccess();
         String amount = voiceBean.getmAmount();

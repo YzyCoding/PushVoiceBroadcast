@@ -2,8 +2,10 @@ package com.yzy.voice;
 
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
+import android.text.TextUtils;
 
 import com.yzy.voice.util.FileUtils;
+import com.yzy.voice.util.StringUtils;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.concurrent.CountDownLatch;
  * @date on 2018-01-12 15:12
  * @email 1417337180@qq.com
  * @describe 组合音频 实体类
- * @ideas  开头 + 金额 + 单位
+ * @ideas 开头 + 金额 + 单位
  */
 
 public class VoiceBean {
@@ -27,9 +29,18 @@ public class VoiceBean {
     }
 
     public static VoiceBean getDefaultBean(String money) {
+        if (TextUtils.isEmpty(money)) {
+            return null;
+        }
+
+        String toMoney = StringUtils.getMoney(money);
+        if (TextUtils.isEmpty(toMoney)) {
+            return null;
+        }
+
         return new VoiceBean()
                 .setmStartSuccess(VoiceConstants.SUCCESS)
-                .setmAmount(money)
+                .setmAmount(toMoney)
                 .setmUnit(VoiceConstants.YUAN);
     }
 

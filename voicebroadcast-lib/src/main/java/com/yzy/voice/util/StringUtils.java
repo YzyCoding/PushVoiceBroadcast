@@ -7,6 +7,8 @@ import com.yzy.voice.VoiceConstants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author 志尧
@@ -18,4 +20,27 @@ import java.util.List;
 
 public class StringUtils {
 
+    /**
+     * 提取字符串中的 数字 带小数点 ，没有就返回""
+     *
+     * @param money
+     * @return
+     */
+    public static String getMoney(String money) {
+        Pattern pattern = Pattern.compile("(\\d+\\.\\d+)");
+        Matcher m = pattern.matcher(money);
+        if (m.find()) {
+            money = m.group(1) == null ? "" : m.group(1);
+        } else {
+            pattern = Pattern.compile("(\\d+)");
+            m = pattern.matcher(money);
+            if (m.find()) {
+                money = m.group(1) == null ? "" : m.group(1);
+            } else {
+                money = "";
+            }
+        }
+
+        return money;
+    }
 }
