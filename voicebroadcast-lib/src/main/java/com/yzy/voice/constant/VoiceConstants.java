@@ -1,4 +1,4 @@
-package com.yzy.voice;
+package com.yzy.voice.constant;
 
 /**
  * @author 志尧
@@ -8,10 +8,6 @@ package com.yzy.voice;
  * @ideas
  */
 public class VoiceConstants {
-
-    /**
-     * /assets/sound 音频 tts 后半命名
-     */
 
     public static final String FILE_PATH = "sound/tts_%s.mp3";
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 
+import com.yzy.voice.constant.VoiceConstants;
 import com.yzy.voice.util.FileUtils;
 
 import java.io.IOException;
@@ -23,9 +24,11 @@ import java.util.concurrent.Executors;
 public class VoicePlay {
 
     private ExecutorService mExecutorService;
+    private Context mContext;
 
-    private VoicePlay() {
-        mExecutorService = Executors.newCachedThreadPool();
+    private VoicePlay(Context context) {
+        this.mContext = context;
+        this.mExecutorService = Executors.newCachedThreadPool();
     }
 
     private volatile static VoicePlay mVoicePlay = null;
@@ -35,43 +38,58 @@ public class VoicePlay {
      *
      * @return
      */
-    public static VoicePlay getInstance() {
+    public static VoicePlay with(Context context) {
         if (mVoicePlay == null) {
             synchronized (VoicePlay.class) {
                 if (mVoicePlay == null) {
-                    mVoicePlay = new VoicePlay();
+                    mVoicePlay = new VoicePlay(context);
                 }
             }
         }
         return mVoicePlay;
     }
 
-
-    private Context mContext;
-    private String mMoney;
-    private boolean mIsNum;
-
-    public VoicePlay with(Context context) {
-        this.mContext = context;
-        return this;
+    /**
+     * 默认收款成功样式
+     *
+     * @param money
+     */
+    public void play(String money) {
+        play(money, false);
     }
 
-    public VoicePlay setmMoney(String mMoney) {
-        this.mMoney = mMoney;
-        return this;
+    /**
+     * 设置播报数字
+     *
+     * @param money
+     * @param checkNum
+     */
+    public void play(String money, boolean checkNum) {
+        VoiceBuilder voiceBuilder = new VoiceBuilder.Builder()
+                .start(VoiceConstants.SUCCESS)
+                .money(money)
+                .unit(VoiceConstants.YUAN)
+                .checkNum(checkNum)
+                .builder();
+        executeStart(voiceBuilder);
     }
 
-    public VoicePlay setmIsNum(boolean mIsNum) {
-        this.mIsNum = mIsNum;
-        return this;
+    /**
+     * 接收自定义
+     *
+     * @param voiceBuilder
+     */
+    public void play(VoiceBuilder voiceBuilder) {
+        executeStart(voiceBuilder);
     }
 
-    public void play() {
-        if (mExecutorService == null) {
-            return;
-        }
-
-        List<String> voicePlay = VoiceCompose.genVoiceList(VoiceBean.getDefaultBean(mMoney), mIsNum);
+    /**
+     * 开启线程
+     *
+     * @param builder
+     */
+    private void executeStart(VoiceBuilder builder) {
+        List<String> voicePlay = VoiceTextTemplate.genVoiceList(builder);
         if (voicePlay == null || voicePlay.isEmpty()) {
             return;
         }

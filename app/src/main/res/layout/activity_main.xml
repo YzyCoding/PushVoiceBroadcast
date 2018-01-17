@@ -32,6 +32,13 @@
             android:layout_alignParentRight="true"
             android:text="清除列表" />
 
+        <Switch
+            android:id="@+id/switch_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="中/数" />
+
     </RelativeLayout>
 
     <ScrollView

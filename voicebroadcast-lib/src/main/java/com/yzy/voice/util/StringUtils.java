@@ -1,12 +1,5 @@
 package com.yzy.voice.util;
 
-import android.text.TextUtils;
-
-import com.yzy.voice.VoiceCompose;
-import com.yzy.voice.VoiceConstants;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

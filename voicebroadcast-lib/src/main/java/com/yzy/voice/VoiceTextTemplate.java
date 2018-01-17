@@ -1,21 +1,59 @@
-package com.yzy.voice.util;
+package com.yzy.voice;
 
 import android.text.TextUtils;
 
-import com.yzy.voice.VoiceConstants;
+import com.yzy.voice.constant.VoiceConstants;
+import com.yzy.voice.util.MoneyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author 志尧
- * @date on 2018-01-12 16:20
+ * @date on 2018-01-12 15:25
  * @email 1417337180@qq.com
- * @describe 音频文字组合
+ * @describe 音频组合
  * @ideas
  */
 
-public class VoiceUtils {
+public class VoiceTextTemplate {
+
+    /**
+     * 音频组合
+     *
+     * @param voiceBean
+     * @return
+     */
+    public static List<String> genVoiceList(VoiceBuilder voiceBean) {
+        List<String> result = new ArrayList<>();
+        String start = voiceBean.getStart();
+        String money = voiceBean.getMoney();
+        String unit = voiceBean.getUnit();
+        boolean checkNum = voiceBean.isCheckNum();
+
+        if (TextUtils.isEmpty(money)) {
+            return result;
+        }
+
+        if (!TextUtils.isEmpty(start)) {
+            result.add(start);
+        }
+
+        if (!TextUtils.isEmpty(money)) {
+            if (checkNum) {
+                result.addAll(createReadableNumList(money));
+            } else {
+                result.addAll(genReadableMoney(money));
+            }
+        }
+
+        if (!TextUtils.isEmpty(unit)) {
+            result.add(unit);
+        }
+
+        return result;
+    }
+
 
     /**
      * 全转成 中文 RMB
@@ -23,7 +61,7 @@ public class VoiceUtils {
      * @param numString
      * @return
      */
-    public static List<String> genReadableMoney(String numString) {
+    private static List<String> genReadableMoney(String numString) {
         List<String> result = new ArrayList<>();
         if (!TextUtils.isEmpty(numString)) {
             if (numString.contains(VoiceConstants.DOT_POINT)) {
@@ -43,7 +81,7 @@ public class VoiceUtils {
         return result;
     }
 
-    public static List<String> readDecimalPart(String decimalPart) {
+    private static List<String> readDecimalPart(String decimalPart) {
         List<String> result = new ArrayList<>();
         if (!"00".equals(decimalPart)) {
             char[] chars = decimalPart.toCharArray();
@@ -61,7 +99,7 @@ public class VoiceUtils {
      * @param numString
      * @return
      */
-    public static List<String> createReadableNumList(String numString) {
+    private static List<String> createReadableNumList(String numString) {
         List<String> result = new ArrayList<>();
         if (!TextUtils.isEmpty(numString)) {
             int len = numString.length();
@@ -76,14 +114,13 @@ public class VoiceUtils {
         return result;
     }
 
-
     /**
      * 返回数字对应的音频
      *
      * @param integerPart
      * @return
      */
-    public static List<String> readIntPart(String integerPart) {
+    private static List<String> readIntPart(String integerPart) {
         List<String> result = new ArrayList<>();
         String intString = MoneyUtils.readInt(Integer.parseInt(integerPart));
         int len = intString.length();
