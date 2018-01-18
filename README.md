@@ -19,7 +19,7 @@
 
 2. 一行代码
 ```
-    VoicePlay.with(MainActivity.this).play(amount, mCheckNum);
+    VoicePlay.with(MainActivity.this).play(amount);
 ```
 
 * 支持顺序播报
