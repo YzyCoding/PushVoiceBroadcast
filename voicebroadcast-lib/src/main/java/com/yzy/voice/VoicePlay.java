@@ -119,8 +119,7 @@ public class VoicePlay {
                         assetFileDescription.getLength());
                 mMediaPlayer.prepareAsync();
                 mMediaPlayer.setOnPreparedListener(mediaPlayer -> mMediaPlayer.start());
-                mMediaPlayer.setOnCompletionListener(mediaPlayer ->
-                {
+                mMediaPlayer.setOnCompletionListener(mediaPlayer -> {
                     mediaPlayer.reset();
                     counter[0]++;
 
