@@ -13,22 +13,20 @@
     }
 
     dependencies {
-        implementation 'com.github.YzyCoding:PushVoiceBroadcast:1.0.0'
+        implementation 'com.github.YzyCoding:PushVoiceBroadcast:1.0.2'
     }
 ```
 
-2. 收到推送时调用
+2. 一行代码
 ```
-        VoicePlay.getInstance()
-                .with(MainActivity.this)
-                .setmMoney(amount)
-                .play();
+    VoicePlay.with(MainActivity.this).play(amount, mCheckNum);
 
 ```
 
 * 支持顺序播报
 * 支持中文大写
 * 支持全数字
+* 替换音频文件导入源码
 
 
 [fir下载](https://fir.im/gl7q)
