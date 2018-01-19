@@ -19,8 +19,7 @@
 
 2. 一行代码
 ```
-    VoicePlay.with(MainActivity.this).play(amount, mCheckNum);
-
+    VoicePlay.with(MainActivity.this).play(amount);
 ```
 
 * 支持顺序播报
@@ -98,5 +97,5 @@
 
 
 参考：
-[KTools](https://github.com/jiangkang/KTools/blob/master/app/src/main/java/com/jiangkang/ktools/audio/VoiceSpeaker.java)
+[KTools/Voice](https://github.com/jiangkang/KTools/blob/master/app/src/main/java/com/jiangkang/ktools/audio/VoiceSpeaker.java)
 
