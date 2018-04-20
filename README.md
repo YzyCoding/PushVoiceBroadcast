@@ -27,7 +27,7 @@
 * 支持全数字
 * 替换音频文件导入源码
 
-#容错处理
+# 容错处理
 ```aidl
     /**
      * 提取字符串中的 数字 带小数点 ，没有就返回""
@@ -91,11 +91,12 @@
 ```
 
 
-[fir下载](https://fir.im/gl7q)
+# APK下载
+[点我体验](https://fir.im/gl7q)
 
 [简书](https://www.jianshu.com/p/62e6382c610b)
 
 
-参考：
+# 参考：
 [KTools/Voice](https://github.com/jiangkang/KTools/blob/master/app/src/main/java/com/jiangkang/ktools/audio/VoiceSpeaker.java)
 
