@@ -1,6 +1,12 @@
 # PushVoiceBroadcast
 支付宝商家语音播报
 
+！！！！！！！！！！！！
+
+该项目已不维护
+
+！！！！！！！！！！！！
+
 ![image](https://github.com/YzyCoding/PushVoiceBroadcast/blob/master/image/jianshu_0038.png)
 
 1. gradle引入
